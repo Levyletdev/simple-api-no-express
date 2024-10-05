@@ -1,4 +1,4 @@
-const SequelizeRepository = require("./sequelizeRepository.js");
+const SequelizeRepository = require("./SequelizeRepository.js");
 
 class UserRepository extends SequelizeRepository {
   constructor() {
