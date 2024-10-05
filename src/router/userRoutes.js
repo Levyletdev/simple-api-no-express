@@ -1,0 +1,20 @@
+const UserController = require("../controllers/UserController.js");
+const UserRepository = require("../repositorys/UserRepository.js");
+const UserUseCase = require("../use-cases/UserUseCase.js");
+const getParams = require("../utils/getParams.js");
+
+const userRepository = new UserRepository();
+const userUseCase = new UserUseCase(userRepository);
+const userController = new UserController(userUseCase);
+
+function userRoutes(req, res) {
+  const { url, method } = req;
+  const [endpoint, id] = getParams(req);
+  const route = "/users";
+
+  if (url === route && method === "GET") return userController.getAll(req, res);
+  if (url === route && method === "POST") return userController.createUser(req, res);
+  if (endpoint === "users" && method === "GET") return userController.getById(req, res);
+}
+
+module.exports = userRoutes;
