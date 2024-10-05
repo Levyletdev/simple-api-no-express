@@ -27,8 +27,8 @@ class SequelizeRepository {
     return true;
   }
 
-  async delete(filter) {
-    return database[this.model].destroy({ where: filter });
+  async deleteById(id) {
+    return database[this.model].destroy({ where: id });
   }
 }
 
