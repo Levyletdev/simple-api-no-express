@@ -1,4 +1,4 @@
-const rootRoute = require("./rootRoute");
+const rootRoute = require("./rootRoute.js");
 
 function router(req, res) {
   const { url } = req;
