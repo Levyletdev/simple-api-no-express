@@ -5,8 +5,12 @@ class UserUseCase {
     this.userRepository = userRepository;
   }
 
-  async getAllUsers() {
+  async getAll() {
     return this.userRepository.getAll();
+  }
+
+  async getById(id) {
+    return this.userRepository.getById(id);
   }
 
   async createUser(dto) {
