@@ -1,4 +1,4 @@
-const getParams = require("./getParams");
+const getParams = require("./getParams.js");
 
 function getId(req) {
   const [endpoint, id] = getParams(req);
