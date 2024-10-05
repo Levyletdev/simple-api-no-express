@@ -17,6 +17,10 @@ class UserUseCase {
     const user = new User(dto);
     return this.userRepository.create(user);
   }
+
+  async deleteById(id) {
+    return this.userRepository.deleteById(id);
+  }
 }
 
 module.exports = UserUseCase;
