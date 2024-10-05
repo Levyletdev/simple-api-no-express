@@ -15,7 +15,7 @@ class Responser {
   }
 
   json(data) {
-    this.res.writeHead(this.status, this.headers);
+    this.res.writeHead(this.statusCode, this.headers);
     this.res.end(JSON.stringify(data));
     return this;
   }
