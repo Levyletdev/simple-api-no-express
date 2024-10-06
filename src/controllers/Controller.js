@@ -33,7 +33,7 @@ class Controller {
     try {
       const id = getId(req);
 
-      const deletedRecord = awaitthis.useCase.deleteById(Number(id));
+      const deletedRecord = await this.useCase.deleteById(Number(id));
 
       if (!deletedRecord)
         return new Responser(res).status(400).json({
