@@ -18,6 +18,11 @@ class UserUseCase {
     return this.userRepository.create(user);
   }
 
+  async updateById(dto, id) {
+    const user = new User(dto);
+    return this.userRepository.updateById(dto, id);
+  }
+
   async deleteById(id) {
     return this.userRepository.deleteById(id);
   }
