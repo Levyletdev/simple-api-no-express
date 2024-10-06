@@ -11,7 +11,7 @@ class UserController extends Controller {
     try {
       const body = await getRequestBody(req);
       const parsedBody = JSON.parse(body);
-      const user = await this.userUseCase.createUser(parsedBody);
+      const user = await this.useCase.createUser(parsedBody);
       if (!user) return new Responser(res).status(400).json({ message: "Requisição incorreta", user: user });
       return new Responser(res).status(201).json({ message: "Usuário cadastrado com sucesso", usuario: user });
     } catch (error) {
