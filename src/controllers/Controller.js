@@ -19,11 +19,30 @@ class Controller {
     try {
       const id = getId(req);
       const record = await this.useCase.getById(Number(id));
-      if (!id)
+      if (!record)
         return new Responser(res).status(400).json({
           message: "ID do registro não localizado",
         });
       return new Responser(res).status(200).json(record);
+    } catch (error) {
+      return new Responser(res).status(500).json({ message: error.message });
+    }
+  }
+
+  async deleteById(req, res) {
+    try {
+      const id = getId(req);
+
+      const deletedRecord = awaitthis.useCase.deleteById(Number(id));
+
+      if (!deletedRecord)
+        return new Responser(res).status(400).json({
+          message: "ID do registro não localizado",
+        });
+
+      return new Responser(res).status(200).json({
+        message: "Registro removido com sucesso",
+      });
     } catch (error) {
       return new Responser(res).status(500).json({ message: error.message });
     }
