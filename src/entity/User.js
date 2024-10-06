@@ -1,8 +1,10 @@
-const ValidationError = require("../helpers/ValidationError.js");
+const isNumber = require("../utils/validators/isNumber.js");
 const isString = require("../utils/validators/isString.js");
-const isUndefined = require("../utils/validators/isUndefined.js");
 const notAlpha = require("../utils/validators/notAlpha.js");
+const notNumber = require("../utils/validators/notNumber.js");
 const notString = require("../utils/validators/notString.js");
+const isUndefined = require("../utils/validators/isUndefined.js");
+const ValidationError = require("../helpers/ValidationError.js");
 
 class User {
   constructor({ nome, idade, sexo, habilitado }) {
@@ -54,6 +56,40 @@ class User {
     }
 
     return (this.nome = nome);
+  }
+
+  validateIdade(idade) {
+    if (isUndefined(idade)) {
+      throw new ValidationError({
+        name: "MissingPropertyError",
+        message: "Idade é obrigatória",
+        value: null,
+      });
+    }
+
+    if (notNumber(idade)) {
+      throw new ValidationError({
+        name: "InverseTypeError",
+        message: "Idade dever ser do tipo String",
+        value: idade,
+      });
+    }
+
+    if (isNumber(idade) && idade < 18) {
+      throw new ValidationError({
+        name: "InvalidDefinitionError",
+        message: "A idade deve ser maior ou igual a 18",
+        value: idade,
+      });
+    }
+
+    if (isNumber(idade) && idade > 100) {
+      throw new ValidationError({
+        name: "InvalidDefinitionError",
+        message: "A idade deve ser menor que ou igual a 100",
+        value: idade,
+      });
+    }
   }
 }
 
