@@ -1,4 +1,4 @@
-const Responser = require("../helpers/Responser");
+const Responser = require("../utils/helpers/Responser");
 const getId = require("../utils/getId");
 
 class Controller {
