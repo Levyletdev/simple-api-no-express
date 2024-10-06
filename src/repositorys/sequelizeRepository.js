@@ -22,13 +22,15 @@ class SequelizeRepository {
   }
 
   async update(dto, id) {
-    const isUpdated = await database[this.model].update(dto, { where: id });
+    const isUpdated = await database[this.model].update(dto, { where: { id: id } });
     if (isUpdated[0] === 0) return false;
     return true;
   }
 
   async deleteById(id) {
-    return database[this.model].destroy({ where: id });
+    const isDeleted = await database[this.model].destroy({ where: { id: id } });
+    if (isDeleted[0] === 0) return false;
+    return true;
   }
 }
 
