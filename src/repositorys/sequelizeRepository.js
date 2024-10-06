@@ -21,7 +21,7 @@ class SequelizeRepository {
     return database[this.model].create(dto);
   }
 
-  async update(dto, id) {
+  async updateById(dto, id) {
     const isUpdated = await database[this.model].update(dto, { where: { id: id } });
     if (isUpdated[0] === 0) return false;
     return true;
