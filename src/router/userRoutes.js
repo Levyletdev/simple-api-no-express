@@ -15,6 +15,7 @@ function userRoutes(req, res) {
   if (url === route && method === "GET") return userController.getAll(req, res);
   if (url === route && method === "POST") return userController.createUser(req, res);
   if (endpoint === "users" && method === "GET") return userController.getById(req, res);
+  if (endpoint === "users" && method === "DELETE") return userController.deleteById(req, res);
 }
 
 module.exports = userRoutes;
