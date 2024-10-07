@@ -7,7 +7,7 @@ class UserController extends Controller {
     super(userUseCase);
   }
 
-  async createUser(req, res) {
+  async createUser(req, res, handler) {
     try {
       const body = await getRequestBody(req);
       const parsedBody = JSON.parse(body);
@@ -15,7 +15,7 @@ class UserController extends Controller {
       if (!user) return new Responser(res).status(400).json({ message: "Requisição incorreta", user: user });
       return new Responser(res).status(201).json({ message: "Usuário cadastrado com sucesso", usuario: user });
     } catch (error) {
-      return new Responser(res).status(500).json({ message: error.message });
+      return handler(error, res);
     }
   }
 }
