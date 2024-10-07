@@ -29,7 +29,7 @@ class SequelizeRepository {
 
   async deleteById(id) {
     const isDeleted = await database[this.model].destroy({ where: { id: id } });
-    if (isDeleted[0] === 0) return false;
+    if (isDeleted === 0) return false;
     return true;
   }
 }
