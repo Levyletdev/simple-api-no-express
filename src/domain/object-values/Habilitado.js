@@ -5,7 +5,6 @@ const ValidationError = require("../../utils/helpers/ValidationError.js");
 class Habilitado {
   constructor(boolean = false, idade) {
     this.validateHabilitato(boolean, idade);
-    this.habilitado = boolean;
   }
 
   validateHabilitato(boolean, idade) {
@@ -25,6 +24,12 @@ class Habilitado {
         value: boolean,
       });
     }
+
+    return (this.habilitado = boolean);
+  }
+
+  getHabilitado() {
+    return this.habilitado;
   }
 }
 
