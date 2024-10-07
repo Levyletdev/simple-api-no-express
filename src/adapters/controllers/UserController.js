@@ -1,6 +1,6 @@
 const Controller = require("./Controller.js");
-const Responser = require("../utils/helpers/Responser.js");
-const getRequestBody = require("../utils/getRequestBody.js");
+const Responser = require("../../utils/helpers/Responser.js");
+const getRequestBody = require("../../utils/helpers/getRequestBody.js");
 
 class UserController extends Controller {
   constructor(userUseCase) {
