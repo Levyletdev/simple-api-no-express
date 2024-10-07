@@ -1,5 +1,5 @@
 const UserController = require("../controllers/UserController.js");
-const UserRepository = require("../repositorys/UserRepository.js");
+const UserRepository = require("../repositories/UserRepository.js");
 const UserUseCase = require("../use-cases/UserUseCase.js");
 const getParams = require("../utils/getParams.js");
 
