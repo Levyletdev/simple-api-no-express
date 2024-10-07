@@ -53,3 +53,5 @@ class Nome {
     return (this.nome = nome);
   }
 }
+
+module.exports = Nome;
