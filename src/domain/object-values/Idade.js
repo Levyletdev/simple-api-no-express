@@ -25,10 +25,10 @@ class Idade {
       });
     }
 
-    if (isNumber(idade) && idade < 18) {
+    if (isNumber(idade) && idade < 0) {
       throw new ValidationError({
         name: "InvalidDefinitionError",
-        message: "A idade deve ser maior ou igual a 18",
+        message: "A idade não pode ser negativa",
         value: idade,
       });
     }
