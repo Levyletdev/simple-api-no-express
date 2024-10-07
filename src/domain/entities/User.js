@@ -15,50 +15,6 @@ class User {
     this.habilitado = habilitado;
   }
 
-  validateNome(nome) {
-    if (isUndefined(nome)) {
-      throw new ValidationError({
-        name: "MissingPropertyError",
-        message: "Nome é obrigatório",
-        value: null,
-      });
-    }
-
-    if (notString(nome)) {
-      throw new ValidationError({
-        name: "InverseTypeError",
-        message: "Nome dever ser do tipo String",
-        value: nome,
-      });
-    }
-
-    if (isString(nome) && nome.length < 3) {
-      throw new ValidationError({
-        name: "InvalidDefinitionError",
-        message: "O nome deve ter no mínimo 3 caracteres",
-        value: nome,
-      });
-    }
-
-    if (isString(nome) && nome.length > 25) {
-      throw new ValidationError({
-        name: "InvalidDefinitonError",
-        message: "O nome deve menos de 25 caracteres",
-        value: nome,
-      });
-    }
-
-    if (isString(nome) && notAlpha(nome)) {
-      throw new ValidationError({
-        name: "InvalidDefinitonError",
-        message: "O nome deve conter apenas letras e espaços",
-        value: nome,
-      });
-    }
-
-    return (this.nome = nome);
-  }
-
   validateIdade(idade) {
     if (isUndefined(idade)) {
       throw new ValidationError({
