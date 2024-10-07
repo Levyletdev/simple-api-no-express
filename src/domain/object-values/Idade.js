@@ -20,7 +20,7 @@ class Idade {
     if (notNumber(idade)) {
       throw new ValidationError({
         name: "InverseTypeError",
-        message: "Idade dever ser do tipo String",
+        message: "Idade dever ser do tipo Number",
         value: idade,
       });
     }
