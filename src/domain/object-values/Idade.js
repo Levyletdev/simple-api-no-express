@@ -33,10 +33,10 @@ class Idade {
       });
     }
 
-    if (isNumber(idade) && idade > 100) {
+    if (isNumber(idade) && idade > 112) {
       throw new ValidationError({
         name: "InvalidDefinitionError",
-        message: "A idade deve ser menor que ou igual a 100",
+        message: "A idade deve ser menor ou igual a 112",
         value: idade,
       });
     }
