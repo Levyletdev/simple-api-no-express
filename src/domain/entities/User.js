@@ -1,4 +1,5 @@
 const Nome = require("../object-values/Nome.js");
+const Idade = require("../object-values/Idade.js");
 const notIn = require("../../utils/validators/notIn.js");
 const isNumber = require("../../utils/validators/isNumber.js");
 const isString = require("../../utils/validators/isString.js");
@@ -11,7 +12,7 @@ const ValidationError = require("../../utils/helpers/ValidationError.js");
 class User {
   constructor({ nome, idade, genero, habilitado }) {
     this.nome = new Nome(nome);
-    this.idade = idade;
+    this.idade = new Idade(idade);
     this.genero = genero;
     this.habilitado = habilitado;
   }
