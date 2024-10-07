@@ -50,7 +50,7 @@ class Nome {
       });
     }
 
-    return nome;
+    return (this.nome = nome);
   }
 }
 
