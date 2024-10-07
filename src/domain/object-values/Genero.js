@@ -7,7 +7,6 @@ const ValidationError = require("../../utils/helpers/ValidationError.js");
 class Genero {
   constructor(genero) {
     this.validateGenero(genero);
-    this.genero = genero;
   }
 
   validateGenero(genero) {
@@ -34,6 +33,12 @@ class Genero {
         value: genero,
       });
     }
+
+    return (this.genero = genero);
+  }
+
+  getGenero() {
+    return this.genero;
   }
 }
 
