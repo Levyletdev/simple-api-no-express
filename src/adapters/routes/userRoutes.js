@@ -1,7 +1,7 @@
+const getParams = require("../../utils/helpers/getParams.js");
 const UserController = require("../controllers/UserController.js");
-const UserRepository = require("../repositories/UserRepository.js");
-const UserUseCase = require("../domain/use-cases/UserUseCase.js");
-const getParams = require("../utils/getParams.js");
+const UserUseCase = require("../../domain/use-cases/UserUseCase.js");
+const UserRepository = require("../../repositories/UserRepository.js");
 
 const userRepository = new UserRepository();
 const userUseCase = new UserUseCase(userRepository);
