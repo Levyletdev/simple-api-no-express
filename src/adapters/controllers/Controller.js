@@ -1,5 +1,5 @@
-const Responser = require("../utils/helpers/Responser.js");
-const getId = require("../utils/getId.js");
+const getId = require("../../utils/helpers/getId.js");
+const Responser = require("../../utils/helpers/Responser.js");
 
 class Controller {
   constructor(entityUseCase) {
