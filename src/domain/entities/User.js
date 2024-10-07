@@ -16,34 +16,6 @@ class User {
     this.genero = genero;
     this.habilitado = habilitado;
   }
-
-  validateGenero(genero) {
-    if (isUndefined(genero)) {
-      throw new ValidationError({
-        name: "MissingPropertyError",
-        message: "Genêro é obrigatório",
-        value: null,
-      });
-    }
-
-    if (notString(genero)) {
-      throw new ValidationError({
-        name: "InverseTypeError",
-        message: "Genêro dever ser do tipo String",
-        value: genero,
-      });
-    }
-
-    if (isString(genero) && notIn(genero, ["Feminino", "Masculino"])) {
-      throw new ValidationError({
-        name: "InvalidDefinitionError",
-        message: `${genero} não é valido, apenas Masculino e Feminino`,
-        value: genero,
-      });
-    }
-
-    return (this.genero = genero);
-  }
 }
 
 module.exports = User;
