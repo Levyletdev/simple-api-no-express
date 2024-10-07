@@ -8,7 +8,7 @@ class Habilitado {
   }
 
   validateHabilitato(boolean, idade) {
-    const age = new Idade(idade);
+    const age = new Idade(idade).getIdade()
 
     if (notBoolean(boolean)) {
       throw new ValidationError({
