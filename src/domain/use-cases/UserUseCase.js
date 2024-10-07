@@ -15,6 +15,7 @@ class UserUseCase {
 
   async createUser(dto) {
     const user = new User(dto);
+    console.log(user);
     return this.userRepository.create(user);
   }
 

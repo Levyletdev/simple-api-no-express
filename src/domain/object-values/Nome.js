@@ -7,7 +7,6 @@ const ValidationError = require("../../utils/helpers/ValidationError.js");
 class Nome {
   constructor(nome) {
     this.validateNome(nome);
-    this.nome = nome;
   }
 
   validateNome(nome) {
@@ -50,6 +49,8 @@ class Nome {
         value: nome,
       });
     }
+
+    return nome;
   }
 }
 
