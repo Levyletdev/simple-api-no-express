@@ -5,10 +5,10 @@ const Habilitado = require("../object-values/Habilitado.js");
 
 class User {
   constructor({ nome, idade, genero, habilitado }) {
-    this.nome = new Nome(nome).getNome()
-    this.idade = new Idade(idade).getIade()
-    this.genero = new Genero(genero).getGenero()
-    this.habilitado = new Habilitado(habilitado, idade);
+    this.nome = new Nome(nome).getNome();
+    this.idade = new Idade(idade).getIade();
+    this.genero = new Genero(genero).getGenero();
+    this.habilitado = new Habilitado(habilitado, idade).getHabilitado();
   }
 }
 
