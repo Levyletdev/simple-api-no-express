@@ -8,12 +8,13 @@ const notNumber = require("../../utils/validators/notNumber.js");
 const notString = require("../../utils/validators/notString.js");
 const isUndefined = require("../../utils/validators/isUndefined.js");
 const ValidationError = require("../../utils/helpers/ValidationError.js");
+const Genero = require("../object-values/Genero.js");
 
 class User {
   constructor({ nome, idade, genero, habilitado }) {
     this.nome = new Nome(nome);
     this.idade = new Idade(idade);
-    this.genero = genero;
+    this.genero = new Genero(genero);
     this.habilitado = habilitado;
   }
 }
