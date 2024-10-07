@@ -6,7 +6,6 @@ const ValidationError = require("../../utils/helpers/ValidationError.js");
 class Idade {
   constructor(idade) {
     this.validateIdade(idade);
-    this.idade = idade;
   }
 
   validateIdade(idade) {
@@ -41,6 +40,12 @@ class Idade {
         value: idade,
       });
     }
+
+    return (this.idade = idade);
+  }
+
+  getIade() {
+    return this.idade;
   }
 }
 
