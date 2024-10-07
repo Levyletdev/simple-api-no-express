@@ -7,7 +7,6 @@ const ValidationError = require("../../utils/helpers/ValidationError.js");
 class Nome {
   constructor(nome) {
     this.validateNome(nome);
-    this.getNome();
   }
 
   validateNome(nome) {
