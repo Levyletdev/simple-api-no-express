@@ -44,7 +44,7 @@ class Idade {
     return (this.idade = idade);
   }
 
-  getIade() {
+  getIdade() {
     return this.idade;
   }
 }
