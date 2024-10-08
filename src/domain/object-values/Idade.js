@@ -44,7 +44,7 @@ class Idade {
     return (this.idade = idade);
   }
 
-  getIdade() {
+  toString() {
     return this.idade;
   }
 }
