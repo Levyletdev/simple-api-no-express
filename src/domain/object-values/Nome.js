@@ -53,7 +53,7 @@ class Nome {
     return (this.nome = nome);
   }
 
-  getNome() {
+  toString() {
     return this.nome;
   }
 }
