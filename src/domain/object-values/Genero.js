@@ -37,7 +37,7 @@ class Genero {
     return (this.genero = genero);
   }
 
-  getGenero() {
+  toString() {
     return this.genero;
   }
 }
