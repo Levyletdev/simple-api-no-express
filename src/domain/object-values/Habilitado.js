@@ -8,7 +8,7 @@ class Habilitado {
   }
 
   validateHabilitato(boolean, idade) {
-    const age = new Idade(idade).getIdade()
+    const age = new Idade(idade).getIdade();
 
     if (notBoolean(boolean)) {
       throw new ValidationError({
@@ -28,7 +28,7 @@ class Habilitado {
     return (this.habilitado = boolean);
   }
 
-  getHabilitado() {
+  toString() {
     return this.habilitado;
   }
 }
