@@ -7,7 +7,7 @@ function router(req, res, handler = errorHandler, reject = notFoundHandler) {
   const { url } = req;
   if (url === "/") return rootRoute(req, res, handler, reject);
   if (url.startsWith("/users")) return userRoutes(req, res, handler, reject);
-  reject(res);
+  return reject(res);
 }
 
 module.exports = router;
