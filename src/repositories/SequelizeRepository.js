@@ -1,4 +1,4 @@
-const database = require("../database/models/index.js");
+const database = require("../infra/database/models/index.js");
 
 class SequelizeRepository {
   constructor(modelName) {
