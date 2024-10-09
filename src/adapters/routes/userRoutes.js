@@ -9,11 +9,12 @@ const userController = new UserController(userUseCase);
 
 function userRoutes(req, res, handler, reject) {
   const route = "/users";
+  const params = route + "/";
   const { url, method } = req;
   const [endpoint, id] = getParams(req);
 
-  if ((url === route || url === route + "/") && method === "GET") return userController.getAll(req, res, handler);
-  if (url === route && method === "POST") return userController.createUser(req, res, handler);
+  if ((url === route || url === params) && method === "GET") return userController.getAll(req, res, handler);
+  if ((url === route || url === params) && method === "POST") return userController.createUser(req, res, handler);
   if (endpoint === "users" && id && method === "GET") return userController.getById(req, res, handler);
   if (endpoint === "users" && id && method === "DELETE") return userController.deleteById(req, res, handler);
   return reject(res);
