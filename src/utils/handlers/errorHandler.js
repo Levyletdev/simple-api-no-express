@@ -1,11 +1,11 @@
-const ErrorBase = require("../errors/ErrorBase.js");
+const ServerError = require("../errors/ServerError.js");
 const ValidationError = require("../helpers/ValidationError.js");
 
 function errorHandler(error, res) {
   if (error instanceof ValidationError) {
     return error.report(res);
   } else {
-    return new ErrorBase(`Erro interno do servidor: ${error.message}`).send(res);
+    return new ServerError(error).send(res);
   }
 }
 
