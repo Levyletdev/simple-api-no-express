@@ -7,7 +7,7 @@ const userRepository = new UserRepository();
 const userUseCase = new UserUseCase(userRepository);
 const userController = new UserController(userUseCase);
 
-function userRoutes(req, res, handler) {
+function userRoutes(req, res, handler, reject) {
   const { url, method } = req;
   const [endpoint, id] = getParams(req);
   const route = "/users";
@@ -16,6 +16,7 @@ function userRoutes(req, res, handler) {
   if (url === route && method === "POST") return userController.createUser(req, res, handler);
   if (endpoint === "users" && method === "GET") return userController.getById(req, res, handler);
   if (endpoint === "users" && method === "DELETE") return userController.deleteById(req, res, handler);
+  return reject(res);
 }
 
 module.exports = userRoutes;
