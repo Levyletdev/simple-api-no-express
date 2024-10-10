@@ -1,12 +1,9 @@
 const Responser = require("./Responser.js");
 
 class ValidationError {
-  constructor({ message, name, status, path, value }) {
-    this.message = message || "Alguns dados fornecidos são iválidos";
+  constructor({ message, status}) {
+    this.message = message || "Validation Error.";
     this.status = status || 400;
-    this.name = name;
-    this.path = path;
-    this.value = value;
   }
 
   report(res) {
