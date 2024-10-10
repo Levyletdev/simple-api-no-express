@@ -4,7 +4,7 @@ const isUndefined = require("../../utils/validators/isUndefined.js");
 const NotAlphaError = require("../../utils/errors/NotAlphaError.js");
 const RequiredError = require("../../utils/errors/RequiredError.js");
 const MinlengthError = require("../../utils/errors/MinlengthError.js");
-const MaxlengthError = require("../../utils/errors/MaxlingthError.js");
+const MaxlengthError = require("../../utils/errors/MaxlengthError.js");
 const ValidationError = require("../../utils/helpers/ValidationError.js");
 const InverseStringError = require("../../utils/errors/InverseStringError.js");
 
