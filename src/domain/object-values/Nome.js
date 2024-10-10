@@ -1,8 +1,12 @@
-const isString = require("../../utils/validators/isString.js");
 const notAlpha = require("../../utils/validators/notAlpha.js");
 const notString = require("../../utils/validators/notString.js");
 const isUndefined = require("../../utils/validators/isUndefined.js");
+const NotAlphaError = require("../../utils/errors/NotAlphaError.js");
+const RequiredError = require("../../utils/errors/RequiredError.js");
+const MinlengthError = require("../../utils/errors/MinlengthError.js");
+const MaxlengthError = require("../../utils/errors/MaxlingthError.js");
 const ValidationError = require("../../utils/helpers/ValidationError.js");
+const InverseStringError = require("../../utils/errors/InverseStringError.js");
 
 class Nome {
   constructor(nome) {
@@ -10,45 +14,17 @@ class Nome {
   }
 
   validateNome(nome) {
-    if (isUndefined(nome)) {
-      throw new ValidationError({
-        name: "MissingPropertyError",
-        message: "Nome é obrigatório",
-        value: null,
-      });
-    }
+    const path = "nome", min = 3, max = 20;
 
-    if (notString(nome)) {
-      throw new ValidationError({
-        name: "InverseTypeError",
-        message: "Nome dever ser do tipo String",
-        value: nome,
-      });
-    }
+    if (isUndefined(nome)) throw new ValidationError(new RequiredError(path));
 
-    if (isString(nome) && nome.length < 3) {
-      throw new ValidationError({
-        name: "InvalidDefinitionError",
-        message: "O nome deve ter no mínimo 3 caracteres",
-        value: nome,
-      });
-    }
+    if (notString(nome)) throw new ValidationError(new InverseStringError(path));
 
-    if (isString(nome) && nome.length > 25) {
-      throw new ValidationError({
-        name: "InvalidDefinitonError",
-        message: "O nome deve menos de 25 caracteres",
-        value: nome,
-      });
-    }
+    if (nome.length < min) throw new ValidationError(new MinlengthError(path, min));
 
-    if (isString(nome) && notAlpha(nome)) {
-      throw new ValidationError({
-        name: "InvalidDefinitonError",
-        message: "O nome deve conter apenas letras e espaços",
-        value: nome,
-      });
-    }
+    if (nome.length > max) throw new ValidationError(new MaxlengthError(path, max));
+
+    if (notAlpha(nome)) throw new ValidationError(new NotAlphaError(path));
 
     return (this.nome = nome);
   }
