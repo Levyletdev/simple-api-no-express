@@ -1,7 +1,10 @@
-const isNumber = require("../../utils/validators/isNumber.js");
 const notNumber = require("../../utils/validators/notNumber.js");
 const isUndefined = require("../../utils/validators/isUndefined.js");
+const RequiredError = require("../../utils/errors/RequiredError.js");
+const LessThanError = require("../../utils/errors/LessThanError.js");
 const ValidationError = require("../../utils/helpers/ValidationError.js");
+const GreaterThanError = require("../../utils/errors/GreaterThanError.js");
+const InverseNumberError = require("../../utils/errors/InverseNumberError.js");
 
 class Idade {
   constructor(idade) {
@@ -9,37 +12,15 @@ class Idade {
   }
 
   validateIdade(idade) {
-    if (isUndefined(idade)) {
-      throw new ValidationError({
-        name: "MissingPropertyError",
-        message: "Idade é obrigatória",
-        value: null,
-      });
-    }
+    const path = 'idade', min = 1, max = 112;
 
-    if (notNumber(idade)) {
-      throw new ValidationError({
-        name: "InverseTypeError",
-        message: "Idade dever ser do tipo Number",
-        value: idade,
-      });
-    }
+    if (isUndefined(idade)) throw new ValidationError(new RequiredError(path));
 
-    if (isNumber(idade) && idade < 0) {
-      throw new ValidationError({
-        name: "InvalidDefinitionError",
-        message: "A idade não pode ser negativa",
-        value: idade,
-      });
-    }
+    if (notNumber(idade)) throw new ValidationError(new InverseNumberError(path));
 
-    if (isNumber(idade) && idade > 112) {
-      throw new ValidationError({
-        name: "InvalidDefinitionError",
-        message: "A idade deve ser menor ou igual a 112",
-        value: idade,
-      });
-    }
+    if (idade < min) throw new ValidationError(new LessThanError(path, min));
+
+    if (idade > max) throw new ValidationError(new GreaterThanError(path, max));
 
     return (this.idade = idade);
   }
