@@ -1,6 +1,8 @@
 const Idade = require("./Idade.js");
 const notBoolean = require("../../utils/validators/notBoolean.js");
 const ValidationError = require("../../utils/helpers/ValidationError.js");
+const InverseBooleanError = require("../../utils/errors/InverseBooleanError.js");
+const MinAgeRequirementError = require("../../utils/errors/MinAgeRequirementError.js");
 
 class Habilitado {
   constructor(boolean = false, idade) {
@@ -8,22 +10,10 @@ class Habilitado {
   }
 
   validateHabilitato(boolean, idade) {
-    const age = new Idade(idade).toString()
+    const path = "habilitado", age = new Idade(idade).toString(), minAge = 18;
 
-    if (notBoolean(boolean)) {
-      throw new ValidationError({
-        name: "InverseTypeError",
-        message: "Habilitado dever ser do tipo Boolean",
-      });
-    }
-
-    if (age < 18 && boolean === true) {
-      throw new ValidationError({
-        name: "InvalidDefinitonError",
-        message: "Não é permitido ser habilitado com menos de 18 anos",
-        value: boolean,
-      });
-    }
+    if (notBoolean(boolean)) throw new ValidationError(new InverseBooleanError(path));
+    if (age < minAge && boolean === true) throw new ValidationError(new MinAgeRequirementError(path, minAge));
 
     return (this.habilitado = boolean);
   }
