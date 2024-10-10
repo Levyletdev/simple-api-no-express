@@ -1,8 +1,10 @@
 const notIn = require("../../utils/validators/notIn.js");
-const isString = require("../../utils/validators/isString.js");
 const notString = require("../../utils/validators/notString.js");
 const isUndefined = require("../../utils/validators/isUndefined.js");
+const RequiredError = require("../../utils/errors/RequiredError.js");
+const NotAllowedError = require("../../utils/errors/NotAllowedError.js");
 const ValidationError = require("../../utils/helpers/ValidationError.js");
+const InverseStringError = require("../../utils/errors/InverseStringError.js");
 
 class Genero {
   constructor(genero) {
@@ -10,29 +12,13 @@ class Genero {
   }
 
   validateGenero(genero) {
-    if (isUndefined(genero)) {
-      throw new ValidationError({
-        name: "MissingPropertyError",
-        message: "Genêro é obrigatório",
-        value: null,
-      });
-    }
+    const path = "genero", values = ["Feminino", "Masculino"];
 
-    if (notString(genero)) {
-      throw new ValidationError({
-        name: "InverseTypeError",
-        message: "Genêro dever ser do tipo String",
-        value: genero,
-      });
-    }
+    if (isUndefined(genero)) throw new ValidationError(new RequiredError(path));
 
-    if (isString(genero) && notIn(genero, ["Feminino", "Masculino"])) {
-      throw new ValidationError({
-        name: "InvalidDefinitionError",
-        message: `${genero} não é valido, apenas Masculino e Feminino`,
-        value: genero,
-      });
-    }
+    if (notString(genero)) throw new ValidationError(new InverseStringError(path));
+
+    if (notIn(genero, values)) throw new ValidationError(new NotAllowedError(genero, values));
 
     return (this.genero = genero);
   }
