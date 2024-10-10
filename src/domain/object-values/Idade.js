@@ -13,7 +13,8 @@ class Idade {
 
   validateIdade(idade) {
     const path = 'idade', min = 1, max = 112;
-    if (isUndefined(idade)) throw new ValidationError(new RequiredError(path)) 
+
+    if (isUndefined(idade)) throw new ValidationError(new RequiredError(path));
 
     if (notNumber(idade)) throw new ValidationError(new InverseNumberError(path));
 
