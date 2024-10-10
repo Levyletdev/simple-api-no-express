@@ -15,11 +15,8 @@ class Idade {
     const path = 'idade', min = 1, max = 112;
 
     if (isUndefined(idade)) throw new ValidationError(new RequiredError(path));
-
     if (notNumber(idade)) throw new ValidationError(new InverseNumberError(path));
-
     if (idade < min) throw new ValidationError(new LessThanError(path, min));
-
     if (idade > max) throw new ValidationError(new GreaterThanError(path, max));
 
     return (this.idade = idade);

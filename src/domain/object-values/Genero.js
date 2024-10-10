@@ -15,11 +15,9 @@ class Genero {
     const path = "genero", values = ["Feminino", "Masculino"];
 
     if (isUndefined(genero)) throw new ValidationError(new RequiredError(path));
-
     if (notString(genero)) throw new ValidationError(new InverseStringError(path));
-
     if (notIn(genero, values)) throw new ValidationError(new NotAllowedError(genero, values));
-
+    
     return (this.genero = genero);
   }
 
